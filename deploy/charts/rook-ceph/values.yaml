@@ -5,7 +5,7 @@
 image:
   prefix: rook
   repository: rook/ceph
-  tag: VERSION
+  tag: v1.8.1
   pullPolicy: IfNotPresent
 
 crds:
@@ -42,7 +42,7 @@ currentNamespaceOnly: false
 annotations: {}
 
 ## The logging level for the operator: ERROR | WARNING | INFO | DEBUG
-logLevel: INFO
+logLevel: DEBUG
 
 ## If true, create & use RBAC resources
 ##
@@ -90,7 +90,7 @@ csi:
   enableOMAPGenerator: false
 
   # Set replicas for csi provisioner deployment.
-  provisionerReplicas: 2
+  provisionerReplicas: 1
 
   # Set logging level for csi containers.
   # Supported values from 0 to 5. 0 for general useful logs, 5 for trace level verbosity.
@@ -298,7 +298,7 @@ csi:
     #image: "quay.io/csiaddons/volumereplication-operator:v0.1.0"
 
 enableDiscoveryDaemon: false
-cephCommandsTimeoutSeconds: "15"
+cephCommandsTimeoutSeconds: "30"
 
 # enable the ability to have multiple Ceph filesystems in the same cluster
 # WARNING: Experimental feature in Ceph Releases Octopus (v15)
@@ -357,4 +357,4 @@ admissionController:
 monitoring:
   # requires Prometheus to be pre-installed
   # enabling will also create RBAC rules to allow Operator to create ServiceMonitors
-  enabled: false
+  enabled: true
